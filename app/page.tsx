@@ -37,7 +37,7 @@ export default function Home() {
         </div>
 
         <div className="mt-8 text-center text-sm text-gray-500">
-          "나의 수요일을 읽어 주실 당신, 처음 뵙겠습니다."
+          {"나의 수요일을 읽어 주실 당신, 처음 뵙겠습니다."}
         </div>
       </div>
     </div>
