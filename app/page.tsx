@@ -1,6 +1,29 @@
-import Link from 'next/link';
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const [nickname, setNickname] = useState("");
+  const [error, setError] = useState("");
+  const router = useRouter();
+
+  const handleSubmit = async () => {
+    const res = await fetch("/api/users", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ nickname }),
+    });
+
+    if (res.ok) {
+      localStorage.setItem("nickname", nickname);
+      router.push("/write");
+    } else {
+      const data = await res.json();
+      setError(data.error);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-amber-50 flex items-center justify-center p-4">
       <div className="max-w-2xl w-full bg-white rounded-lg shadow-lg p-8">
@@ -27,12 +50,22 @@ export default function Home() {
             </p>
           </div>
 
+          <input
+            type="text"
+            placeholder="닉네임을 입력해주세요"
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
+            className="border border-amber-200 p-3 rounded-lg w-full focus:outline-none focus:border-amber-500"
+          />
+          {error && <p className="text-red-500 text-sm">{error}</p>}
+
           <div className="text-center">
-            <Link href="/write">
-              <button className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors">
-                편지 쓰기
-              </button>
-            </Link>
+            <button
+              onClick={handleSubmit}
+              className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors w-full"
+            >
+              편지 쓰기
+            </button>
           </div>
         </div>
 
