@@ -25,10 +25,10 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-amber-50 flex items-center justify-center p-4">
-      <div className="max-w-2xl w-full bg-white rounded-lg shadow-lg p-8">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-amber-900 mb-2">
+    <div className="flex min-h-screen items-center justify-center bg-amber-50 p-4">
+      <div className="w-full max-w-2xl rounded-lg bg-white p-8 shadow-lg">
+        <div className="mb-8 text-center">
+          <h1 className="mb-2 text-4xl font-bold text-amber-900">
             수요일의 편지
           </h1>
           <p className="text-gray-600">
@@ -37,11 +37,11 @@ export default function Home() {
         </div>
 
         <div className="space-y-4">
-          <div className="bg-amber-50 p-6 rounded-lg">
-            <h2 className="text-xl font-semibold text-amber-900 mb-3">
+          <div className="rounded-lg bg-amber-50 p-6">
+            <h2 className="mb-3 text-xl font-semibold text-amber-900">
               오늘은 수요일입니다
             </h2>
-            <p className="text-gray-700 mb-4">
+            <p className="mb-4 text-gray-700">
               뭔가 좋은 일이 있었나요? 아니면 힘든 일이 있었나요?
               <br />
               당신의 수요일 이야기를 써서 보내면,
@@ -55,14 +55,14 @@ export default function Home() {
             placeholder="닉네임을 입력해주세요"
             value={nickname}
             onChange={(e) => setNickname(e.target.value)}
-            className="border border-amber-200 p-3 rounded-lg w-full focus:outline-none focus:border-amber-500"
+            className="w-full rounded-lg border border-amber-200 p-3 focus:border-amber-500 focus:outline-none"
           />
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+          {error && <p className="text-sm text-red-500">{error}</p>}
 
           <div className="text-center">
             <button
               onClick={handleSubmit}
-              className="bg-amber-600 hover:bg-amber-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors w-full"
+              className="w-full rounded-lg bg-amber-600 px-8 py-3 font-semibold text-white transition-colors hover:bg-amber-700"
             >
               편지 쓰기
             </button>
